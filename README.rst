@@ -13,7 +13,7 @@ For now:
 
 ::
 
-    pip install https://github.com/fle/django-multi-email-field/archive/master.zip
+    pip install https://github.com/fle/django-multi-email-field/archive/0.1.tar.gz
 
 ==================
 USAGE
