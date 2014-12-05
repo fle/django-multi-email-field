@@ -37,7 +37,7 @@ USAGE
     from django import forms
     from multi_email_field.forms import MultiEmailField
 
-    class SignatureForm(forms.Form):
+    class SendMessageForm(forms.Form):
         emails = MultiEmailField()
 
 ==================
@@ -51,8 +51,8 @@ If you wan to store list of e-mails, you can use this:
     from django.db import models
     from multi_email_field.fields import MultiEmailField
 
-    class JSignatureModel(JSignatureFieldsMixin):
-        MultiEmailField = MultiEmailField()
+    class ContactModel(models.Model):
+        emails = MultiEmailField()
 
 
 ==================
