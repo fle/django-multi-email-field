@@ -6,6 +6,13 @@ It provides:
 * A model field to store the captured list of e-mails;
 
 ==================
+COMPATIBILITY
+==================
+
+* Python 2.6/2.7/3.2/3.3/3.4
+* Django 1.4/1.5/1.6/1.7
+
+==================
 INSTALL
 ==================
 
@@ -13,7 +20,7 @@ For now:
 
 ::
 
-    pip install https://github.com/fle/django-multi-email-field/archive/0.1.tar.gz
+    pip install django-multi-email-field
 
 ==================
 USAGE

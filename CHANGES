@@ -2,7 +2,24 @@
 CHANGELOG
 =========
 
-0.1 (2014-12-05)
+0.3 (2014-12-05)
+==================
+
+** New **
+
+- Add support for Python 3
+- Add support for Django 1.7
+
+
+0.2 (2014-04-08)
+==================
+
+** Bugfixes **
+
+- Stupid blocking bad call
+
+
+0.1 (2014-04-07)
 ==================
 
 - Initial release
