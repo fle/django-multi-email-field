@@ -1,3 +1,5 @@
+from pyquery import PyQuery as pq
+
 from django.test import SimpleTestCase
 from django.core.exceptions import ValidationError
 
@@ -7,11 +9,11 @@ from multi_email_field.widgets import MultiEmailWidget
 
 class MultiEmailFormFieldTest(SimpleTestCase):
 
-    def test_widget(self):
+    def test__widget(self):
         f = MultiEmailFormField()
         self.assertIsInstance(f.widget, MultiEmailWidget)
 
-    def test_to_python(self):
+    def test__to_python(self):
         f = MultiEmailFormField()
         # Empty values
         for val in ['', None]:
@@ -24,7 +26,7 @@ class MultiEmailFormFieldTest(SimpleTestCase):
         self.assertEquals(['foo@bar.com', 'foo2@bar2.com', 'foo3@bar3.com'],
                           f.to_python(val))
 
-    def test_validate(self):
+    def test__validate(self):
         f = MultiEmailFormField(required=True)
         # Empty value
         val = []
@@ -41,3 +43,33 @@ class MultiEmailFormFieldTest(SimpleTestCase):
         # Correct value
         val = ['foo@bar.com']
         f.validate(val)
+
+
+class MultiEmailWidgetTest(SimpleTestCase):
+
+    def test__prep_value__empty(self):
+        w = MultiEmailWidget()
+        value = w.prep_value('')
+        self.assertEqual(value, '')
+
+    def test__prep_value__string(self):
+        w = MultiEmailWidget()
+        value = w.prep_value('foo@foo.fr\nbar@bar.fr')
+        self.assertEqual(value, 'foo@foo.fr\nbar@bar.fr')
+
+    def test__prep_value__list(self):
+        w = MultiEmailWidget()
+        value = w.prep_value(['foo@foo.fr', 'bar@bar.fr'])
+        self.assertEqual(value, 'foo@foo.fr\nbar@bar.fr')
+
+    def test__prep_value__raise(self):
+        w = MultiEmailWidget()
+        self.assertRaises(ValidationError, w.prep_value, 42)
+
+    def test__render(self):
+        w = MultiEmailWidget()
+        output = w.render('test', ['foo@foo.fr', 'bar@bar.fr'])
+        self.assertEqual(1, len(pq('textarea', output)))
+        self.assertEqual(
+            pq('textarea', output).text(),
+            'foo@foo.fr\nbar@bar.fr')
