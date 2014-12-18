@@ -31,5 +31,9 @@ class MultiEmailField(models.Field):
     def get_internal_type(self):
         return 'TextField'
 
-from south.modelsinspector import add_introspection_rules
-add_introspection_rules([], ["multi_email_field.fields.MultiEmailField"])
+
+try:
+    from south.modelsinspector import add_introspection_rules
+    add_introspection_rules([], ["multi_email_field.fields.MultiEmailField"])
+except ImportError:
+    pass
