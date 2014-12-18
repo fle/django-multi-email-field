@@ -5,11 +5,11 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 setup(
     name='django-multi-email-field',
-    version='0.3',
+    version='0.3.1',
     author='Florent Lebreton',
     author_email='florent.lebreton@makina-corpus.com',
-    url='https://github.com/makinacorpus/django-multi-email-field',
-    download_url="https://github.com/fle/django-multi-email-field/tarball/0.3",
+    url='https://github.com/fle/django-multi-email-field',
+    download_url="https://github.com/fle/django-multi-email-field/tarball/0.3.1",
     description="Provides a model field and a form field to manage list of e-mails",
     long_description=open(os.path.join(here, 'README.rst')).read() + '\n\n' +
         open(os.path.join(here, 'CHANGES')).read(),
