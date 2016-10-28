@@ -2,6 +2,16 @@
 CHANGELOG
 =========
 
+0.5 (2016-10-28)
+==================
+
+- Django 1.10 compatibility
+
+** Drop support **
+
+- Django < 1.8 is no longer supported
+
+
 0.4 (2016-04-10)
 ==================
 
