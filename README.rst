@@ -1,4 +1,4 @@
-Field and widget to store a list of e-mail addresses in a `Django <https://www.djangoproject.com>`_ projects.
+Field and widget to store a list of e-mail addresses in a `Django <https://www.djangoproject.com>`_ project.
 
 It provides:
 
@@ -36,7 +36,7 @@ USAGE
     'multi_email_field',
     )
 
-* Use provided form field and widget:
+* Use the provided form field and widget:
 
 ::
 
@@ -51,7 +51,7 @@ USAGE
 IN YOUR MODELS
 ==================
 
-If you wan to store list of e-mails, you can use this:
+If you want to store a list of e-mails, you can use this:
 
 ::
 
