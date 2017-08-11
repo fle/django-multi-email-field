@@ -2,10 +2,22 @@
 CHANGELOG
 =========
 
+0.5.1 (2017-08-11)
+==================
+
+** New **
+
+- Czech translation (thanks @petrmifek)
+
+** Bugfixes **
+
+- Fix pypi release (thanks @costela)
+
+
 0.5 (2016-10-28)
 ==================
 
-- Django 1.10 compatibility
+- Django 1.10 compatibility (thanks @AGASS007)
 
 ** Drop support **
 
@@ -31,7 +43,7 @@ CHANGELOG
 
 ** New **
 
-- Add support for Python 3
+- Add support for Python 3 (thanks @Hanan-Natan)
 - Add support for Django 1.7
 
 
