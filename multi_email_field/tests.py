@@ -6,6 +6,8 @@ from django.core.exceptions import ValidationError
 from multi_email_field.forms import MultiEmailField as MultiEmailFormField
 from multi_email_field.widgets import MultiEmailWidget
 
+urlpatterns = []
+
 
 class MultiEmailFormFieldTest(SimpleTestCase):
 
@@ -70,6 +72,9 @@ class MultiEmailWidgetTest(SimpleTestCase):
         w = MultiEmailWidget()
         output = w.render('test', ['foo@foo.fr', 'bar@bar.fr'])
         self.assertEqual(1, len(pq('textarea', output)))
+        # The template-based widget add a line-return
+        value = pq('textarea', output).text()
         self.assertEqual(
-            pq('textarea', output).text(),
-            'foo@foo.fr\nbar@bar.fr')
+            value.lstrip(),
+            'foo@foo.fr\nbar@bar.fr'
+        )

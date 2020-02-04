@@ -47,7 +47,7 @@ class QuickDjangoTest(object):
                 'django.contrib.auth.middleware.AuthenticationMiddleware',
                 'django.contrib.messages.middleware.MessageMiddleware',
             ),
-            INSTALLED_APPS = self.INSTALLED_APPS + self.apps
+            INSTALLED_APPS=self.INSTALLED_APPS + self.apps
         )
         # Setup is needed for Django >= 1.7
         import django
@@ -59,9 +59,11 @@ class QuickDjangoTest(object):
         except ImportError:
             # DjangoTestSuiteRunner has been deprecated in Django 1.7
             from django.test.simple import DjangoTestSuiteRunner
-            failures = DjangoTestSuiteRunner().run_tests(self.apps, verbosity=1)
+            runner = DjangoTestSuiteRunner()
+            failures = runner.run_tests(self.apps, verbosity=1)
         if failures:  # pragma: no cover
             sys.exit(failures)
+
 
 if __name__ == '__main__':
     """
