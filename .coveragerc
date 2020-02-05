@@ -1,0 +1,4 @@
+[run]
+source = multi_email_field
+omit = multi_email_field/tests/*
+branch = True
