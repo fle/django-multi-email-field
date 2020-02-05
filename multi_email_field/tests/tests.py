@@ -1,12 +1,54 @@
 from pyquery import PyQuery as pq
 
-from django.test import SimpleTestCase
+from django import forms
 from django.core.exceptions import ValidationError
+from django.test import SimpleTestCase, TestCase
 
 from multi_email_field.forms import MultiEmailField as MultiEmailFormField
+from multi_email_field.tests.models import TestModel
 from multi_email_field.widgets import MultiEmailWidget
 
-urlpatterns = []
+
+class MultiEmailFormTest(SimpleTestCase):
+    def test__form(self):
+        class TestForm(forms.Form):
+            f = MultiEmailFormField()
+
+        form = TestForm(initial={'f': ['foo@foo.fr', 'bar@bar.fr']})
+        output = form.as_p()
+        self.assertEqual(1, len(pq('textarea', output)))
+        # The template-based widget add a line-return
+        value = pq('textarea', output).text()
+        self.assertEqual(
+            value.lstrip(),
+            'foo@foo.fr\nbar@bar.fr'
+        )
+
+
+class MultiEmailModelFormTest(TestCase):
+    def test__model_form(self):
+        class TestModelForm(forms.ModelForm):
+            class Meta:
+                model = TestModel
+                fields = forms.ALL_FIELDS
+
+        form = TestModelForm()
+        self.assertIsInstance(form.fields['f'].widget, MultiEmailWidget)
+
+        form = TestModelForm(data={'f': 'foo@foo.fr\nbar@bar.fr'})
+        self.assertTrue(form.is_valid())
+        instance = form.save()
+        self.assertEqual(instance.f, ['foo@foo.fr', 'bar@bar.fr'])
+
+        form = TestModelForm(instance=instance)
+        output = form.as_p()
+        self.assertEqual(1, len(pq('textarea', output)))
+        # The template-based widget add a line-return
+        value = pq('textarea', output).text()
+        self.assertEqual(
+            value.lstrip(),
+            'foo@foo.fr\nbar@bar.fr',
+        )
 
 
 class MultiEmailFormFieldTest(SimpleTestCase):

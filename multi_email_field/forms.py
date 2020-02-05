@@ -19,7 +19,7 @@ class MultiEmailField(forms.Field):
         return [v.strip() for v in value.splitlines() if v != ""]
 
     def validate(self, value):
-        "Check if value consists only of valid emails."
+        """ Check if value consists only of valid emails. """
 
         # Use the parent's handling of required fields, etc.
         super(MultiEmailField, self).validate(value)

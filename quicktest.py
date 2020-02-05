@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import sys
 import argparse
@@ -16,8 +17,7 @@ class QuickDjangoTest(object):
     http://stackoverflow.com/questions/3841725/how-to-launch-tests-for-django-reusable-app
     """
     DIRNAME = os.path.dirname(__file__)
-    INSTALLED_APPS = (
-    )
+    INSTALLED_APPS = ()
 
     def __init__(self, *args, **kwargs):
         self.apps = args
@@ -53,14 +53,8 @@ class QuickDjangoTest(object):
         import django
         if hasattr(django, 'setup'):
             django.setup()
-        try:
-            from django.test.runner import DiscoverRunner
-            failures = DiscoverRunner().run_tests(self.apps, verbosity=1)
-        except ImportError:
-            # DjangoTestSuiteRunner has been deprecated in Django 1.7
-            from django.test.simple import DjangoTestSuiteRunner
-            runner = DjangoTestSuiteRunner()
-            failures = runner.run_tests(self.apps, verbosity=1)
+        from django.test.runner import DiscoverRunner
+        failures = DiscoverRunner().run_tests(self.apps, verbosity=1)
         if failures:  # pragma: no cover
             sys.exit(failures)
 
