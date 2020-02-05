@@ -51,6 +51,53 @@ class MultiEmailModelFormTest(TestCase):
         )
 
 
+class MultiEmailModelTest(TestCase):
+    def test__clean(self):
+        # Nothing of these should raise a ValidationError
+        TestModel().full_clean()
+        TestModel(f="").full_clean()
+        TestModel(f=None).full_clean()
+        TestModel(f=False).full_clean()
+        TestModel(f='foobar@foobar.fr\nbaz@baz.fr').full_clean()
+        TestModel(f=['foo@foo.fr', 'bar@bar.fr']).full_clean()
+
+    def test__string_based_value(self):
+        emails = 'foobar@foobar.fr\nbaz@baz.fr'
+        TestModel.objects.create(f=emails)
+        values = TestModel.objects.values_list('f', flat=True)
+        self.assertEqual(values[0], emails.splitlines())
+
+        qs = TestModel.objects.all()
+        self.assertTrue(qs.filter(f=emails).exists())
+
+    def test__list_based_value(self):
+        emails = ['foo@foo.fr', 'bar@bar.fr']
+        TestModel.objects.create(f=emails)
+
+        values = TestModel.objects.values_list('f', flat=True)
+        self.assertEqual(values[0], emails)
+
+    def test__empty_based_value(self):
+        qs = TestModel.objects.all()
+
+        TestModel.objects.create(f=[])
+        self.assertEqual(qs.values_list('f', flat=True)[0], [])
+        self.assertTrue(qs.filter(f=[]).exists())
+        self.assertTrue(qs.filter(f="").exists())
+        TestModel.objects.all().delete()
+
+        TestModel.objects.create(f="")
+        self.assertEqual(qs.values_list('f', flat=True)[0], [])
+        self.assertTrue(qs.filter(f=[]).exists())
+        self.assertTrue(qs.filter(f="").exists())
+        TestModel.objects.all().delete()
+
+        TestModel.objects.create(f=None)
+        self.assertEqual(TestModel.objects.values_list('f', flat=True)[0], [])
+
+        self.assertTrue(qs.filter(f=None).exists())
+
+
 class MultiEmailFormFieldTest(SimpleTestCase):
 
     def test__widget(self):

@@ -15,7 +15,7 @@ class MultiEmailField(models.Field):
         defaults.update(kwargs)
         return super(MultiEmailField, self).formfield(**defaults)
 
-    def from_db_value(self, value, expression, connection, context):
+    def from_db_value(self, value, expression, connection, context=None):
         if value is None:
             return []
         return value.splitlines()
