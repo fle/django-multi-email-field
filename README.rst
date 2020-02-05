@@ -1,3 +1,5 @@
+|build| |coverage| |pypi|
+
 Field and widget to store a list of e-mail addresses in a `Django <https://www.djangoproject.com>`_ project.
 
 It provides:
@@ -9,8 +11,8 @@ It provides:
 COMPATIBILITY
 ==================
 
-* Python 2.7/3.3/3.4/3.5
-* Django 1.8/1.9/1.10
+* Python 2.7 and 3.5+
+* Django 1.8+, 2.0+ and 3.0+
 
 ==================
 INSTALL
@@ -66,10 +68,16 @@ If you want to store a list of e-mails, you can use this:
 AUTHORS
 ==================
 
-    * Florent Lebreton <florent.lebreton@makina-corpus.com>
+    * Created by `Florent Lebreton <https://github.com/fle/>`_
+    * Maintained by `Makina Corpus <https://github.com/makinacorpus/>`_
 
 |makinacom|_
 
 .. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
+.. |coverage| image:: https://coveralls.io/repos/github/fle/django-multi-email-field/badge.svg?branch=master
+    :target: https://coveralls.io/github/fle/django-multi-email-field?branch=master
+.. |pypi| image:: https://pypip.in/v/django-multi-email-field/badge.png
+    :target: https://crate.io/packages/django-multi-email-field/
+.. |build| image:: https://travis-ci.org/fle/django-multi-email-field.svg?branch=master
+    :target: https://travis-ci.org/fle/django-multi-email-field
 .. _makinacom:  http://www.makina-corpus.com
-
