@@ -116,6 +116,10 @@ class MultiEmailFormFieldTest(SimpleTestCase):
         val = 'foo@bar.com\nfoo2@bar2.com\r\nfoo3@bar3.com'
         self.assertEquals(['foo@bar.com', 'foo2@bar2.com', 'foo3@bar3.com'],
                           f.to_python(val))
+        # Multi elements list values
+        val = ['foo4@bar4.com', 'foo5@bar5.com', 'foo6@bar6.com']
+        self.assertEquals(['foo4@bar4.com', 'foo5@bar5.com', 'foo6@bar6.com'],
+                          f.to_python(val))
 
     def test__validate(self):
         f = MultiEmailFormField(required=True)
