@@ -42,9 +42,9 @@ class MultiEmailModelFormTest(TestCase):
 
         form = TestModelForm(instance=instance)
         output = form.as_p()
-        self.assertEqual(1, len(pq('textarea', output)))
+        self.assertEqual(2, len(pq('textarea', output)))
         # The template-based widget add a line-return
-        value = pq('textarea', output).text()
+        value = pq('textarea:first', output).text()
         self.assertEqual(
             value.lstrip(),
             'foo@foo.fr\nbar@bar.fr',
@@ -52,6 +52,12 @@ class MultiEmailModelFormTest(TestCase):
 
 
 class MultiEmailModelTest(TestCase):
+    def test_default_value(self):
+        self.assertEqual(TestModel().f, [])
+
+    def test_custom_default_value(self):
+        self.assertEqual(TestModel().f_default, ["test@example.com"])
+
     def test__clean(self):
         # Nothing of these should raise a ValidationError
         TestModel().full_clean()

@@ -12,6 +12,10 @@ except ImportError:
 
 class MultiEmailField(models.Field):
     description = "A multi e-mail field stored as a multi-lines text"
+    
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('default', [])
+        super(MultiEmailField, self).__init__(*args, **kwargs)
 
     def formfield(self, **kwargs):
         # This is a fairly standard way to set up some defaults
