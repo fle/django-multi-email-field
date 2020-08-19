@@ -12,7 +12,7 @@ setup(
     description="Provides a model field and a form field to manage list of e-mails",
     long_description=open(os.path.join(here, 'README.rst')).read() + '\n\n' +
         open(os.path.join(here, 'CHANGES')).read(),
-    license='LGPL, see LICENSE file.',
+    license='LGPL',
     install_requires=['Django'],
     packages=find_packages(),
     include_package_data=True,
