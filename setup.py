@@ -1,11 +1,12 @@
 import os
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 here = os.path.abspath(os.path.dirname(__file__))
 
 setup(
-    name='django-multi-email-field',
-    version='0.6.2',
+    name='dj-multi-email-field',
+    version='0.7.0',
     author='Florent Lebreton',
     author_email='florent.lebreton@makina-corpus.com',
     url='https://github.com/fle/django-multi-email-field',
@@ -24,9 +25,8 @@ setup(
         'Intended Audience :: Developers',
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: 1.11',
-        'Framework :: Django :: 2.2',
-        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.2',
+        'Framework :: Django :: 4.0',
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
