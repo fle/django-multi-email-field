@@ -12,7 +12,7 @@ COMPATIBILITY
 ==================
 
 * Python 2.7 and 3.5+
-* Django 1.8+, 2.0+ and 3.0+
+* Django 1.8+, 2.0+, 3.0+ and 4.0
 
 ==================
 INSTALL
