@@ -16,7 +16,10 @@ class MultiEmailField(forms.Field):
         # Return None if no input was given.
         if not value:
             return []
-        return [v.strip() for v in value.splitlines() if v != ""]
+        if isinstance(value, list):
+            return [v.strip() for v in value if v != ""]
+        else:
+            return [v.strip() for v in value.splitlines() if v != ""]
 
     def validate(self, value):
         """ Check if value consists only of valid emails. """
