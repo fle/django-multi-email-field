@@ -19,7 +19,6 @@ jobs:
           - "Django>=4.1,<4.2"
           - "Django>=4.2,<5"
 
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
@@ -33,7 +32,7 @@ jobs:
           pip install pyquery coverage "${{ matrix.django-version }}"
       - name: Run Tests
         run: |
-          python quicktests.py multi_email_field.tests
+          coverage run ./quicktests.py multi_email_field.tests && coverage report
 
   quality-checks:
     runs-on: ubuntu-latest
