@@ -2,6 +2,13 @@
 CHANGELOG
 =========
 
+0.7.0 (2023-07-10)
+==================
+
+- Django 4 compatibility
+- Removed Django (1.11,2.2/3.0/3.1) compatibility
+- Moved CI/CD to Github Actions
+
 0.6.2 (2020-07-23)
 ==================
 
