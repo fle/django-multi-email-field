@@ -32,7 +32,7 @@ jobs:
           pip install pyquery coverage "${{ matrix.django-version }}"
       - name: Run Tests
         run: |
-          coverage run ./quicktests.py multi_email_field.tests && coverage report
+          coverage run ./quicktest.py multi_email_field.tests && coverage report
 
   quality-checks:
     runs-on: ubuntu-latest
