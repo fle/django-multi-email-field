@@ -30,8 +30,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          echo "${{ matrix.python-version }} ${{ matrix.django-version }}"
-          python -m pip install pyquery coverage ${{ matrix.django-version }}
+          pip install pyquery coverage "${{ matrix.django-version }}"
       - name: Run Tests
         run: |
           python quicktests.py multi_email_field.tests
