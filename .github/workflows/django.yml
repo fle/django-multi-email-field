@@ -18,6 +18,12 @@ jobs:
           - "Django>=3.2,<4"
           - "Django>=4.1,<4.2"
           - "Django>=4.2,<5"
+          - "Django>=5.0,<6"
+        exclude:
+          - django-version: "Django>=5.0,<6"
+            python-version: 3.8
+          - django-version: "Django>=5.0,<6"
+            python-version: 3.9
 
     steps:
       - uses: actions/checkout@v3
