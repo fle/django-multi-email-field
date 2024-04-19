@@ -32,7 +32,7 @@ classifiers = [
         "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
-    "django>=3.2,<5",
+    "django>=3.2",
 ]
 
 [project.optional-dependencies]
