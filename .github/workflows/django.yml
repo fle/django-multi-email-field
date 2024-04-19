@@ -13,11 +13,12 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [ 3.8, 3.9, "3.10", "3.11" ]
+        python-version: [ "3.10", "3.11", "3.12" ]
         django-version:
           - "Django>=3.2,<4"
           - "Django>=4.1,<4.2"
           - "Django>=4.2,<5"
+          - "Django>=5.0,<6"
 
     steps:
       - uses: actions/checkout@v3
