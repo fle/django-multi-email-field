@@ -39,3 +39,9 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pyquery", "coverage", "black", "ruff"]
+
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+src = ["multi_email_field"]
