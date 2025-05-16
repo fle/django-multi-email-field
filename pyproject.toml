@@ -14,7 +14,7 @@ maintainers = [
 description = "Provides a model field and a form field to manage list of e-mails"
 readme = "README.rst"
 requires-python = ">=3.9"
-license = {file = "LICENSE"}
+license-files = ["LICENSE"]
 classifiers = [
         "Topic :: Utilities",
         "Natural Language :: English",
