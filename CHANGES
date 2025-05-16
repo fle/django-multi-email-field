@@ -2,6 +2,15 @@
 CHANGELOG
 =========
 
+0.8.0 (2025-05-16)
+==================
+
+- Django 5 compatibility
+- Python 3.12-3.13 compatibility
+- Removed Django 3.2 compatibility
+- Removed black in favor ruff
+- Dropped Django upper bound version
+
 0.7.0 (2023-07-10)
 ==================
 

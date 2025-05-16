@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-multi-email-field"
-version = "0.7.0"
+version = "0.8.0"
 authors = [
-    {name = "Florent Lebreton", email = "florent.lebreton@makina-corpus.com"},
+    {name = "Florent Lebreton", email = "florent@lebreton.email"},
 ]
 maintainers = [
     {name = "Sébastien Corbin", email = "seb.corbin@gmail.com"},
