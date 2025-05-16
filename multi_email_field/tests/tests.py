@@ -110,13 +110,13 @@ class MultiEmailFormFieldTest(SimpleTestCase):
         f = MultiEmailFormField()
         # Empty values
         for val in ["", None]:
-            self.assertEquals([], f.to_python(val))
+            self.assertEqual([], f.to_python(val))
         # One line correct value
         val = "  foo@bar.com    "
-        self.assertEquals(["foo@bar.com"], f.to_python(val))
+        self.assertEqual(["foo@bar.com"], f.to_python(val))
         # Multi lines correct values (test of #0010614)
         val = "foo@bar.com\nfoo2@bar2.com\r\nfoo3@bar3.com"
-        self.assertEquals(
+        self.assertEqual(
             ["foo@bar.com", "foo2@bar2.com", "foo3@bar3.com"], f.to_python(val)
         )
 
